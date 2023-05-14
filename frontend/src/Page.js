@@ -12,6 +12,7 @@ import BrowseTools from './BrowseTools';
 import EditableText from './EditableText';
 import FormattedText from './FormattedText';
 import Type, { TypeBadge } from './Type';
+import DeleteText from './DeleteText';
 
 function Page({backend}) {
 
@@ -159,8 +160,14 @@ function PassageMargin({active, scholium, rubric, backend}) {
   if (!active) return;
   return (
     <Col xs={5} className="scholium">
-      {scholium.map((x, i) =>
-        <EditableText key={i} text={x.text} id={x.id} {...{rubric, backend}} />
+      {scholium.map((x, i) => {
+        return (
+          <>
+            <DeleteText key={i} text={x.text} id={x.id} {...{rubric, backend}}/>
+            <EditableText key={i} text={x.text} id={x.id} {...{rubric, backend}} />
+          </>
+        );
+      }
       )}
     </Col>
   );
