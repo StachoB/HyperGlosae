@@ -53,3 +53,9 @@ end
 def resize_window(width, heigth)
   page.current_window.resize_to(width, heigth)
 end
+
+def drag_and_drop_image(image1, image2)
+  figure1 = find(:xpath, "//figure[contains(.//figcaption, #{image1})]")
+  figure2 = find(:xpath, "//figure[contains(.//figcaption, #{image2})]")
+  figure1.drag_to(figure2)
+end

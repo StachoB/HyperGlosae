@@ -60,3 +60,9 @@ Alors('le document comporte la vidéo avec pour titre {string}') do |title|
     expect(page).to have_content title
   end
 end
+
+Alors("la image {string} apparaît avant la image {string}") do |image1, image2|
+  figure1 = find(:xpath, "//figure[contains(.//figcaption, #{image1})]")
+  figure2 = find(:xpath, "//figure[contains(.//figcaption, #{image2})]")
+  expect(figures.index(figure1)).to be < figures.index(figure2)
+end

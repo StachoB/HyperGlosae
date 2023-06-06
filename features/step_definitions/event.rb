@@ -26,3 +26,7 @@ Quand("j'essaie de remplacer le contenu de la glose par :") do |metadata|
   find('textarea').fill_in with: metadata
   leave_textarea
 end
+
+Quand("je glisser la image {string} derrière la image {string}") do |image1, image2|
+  drag_and_drop_image(image1, image2)
+end
